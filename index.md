@@ -1,3 +1,4 @@
 # My Personal website
 
-This site shall hold multiple informations i want to share or more or less i want to remeber for later. This site is unter continus construction.
+This site shall hold multiple informations I want to share or more or less I
+want to remember for later. This site is under continues construction.
