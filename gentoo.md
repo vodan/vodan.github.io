@@ -278,6 +278,22 @@ If everything is working in the livecd we can fasten the config generation with:
 # make localyesconfig
 ```
 
+now we need to disable the initrd by selecting `General Setup` and disabling
+`CONFIG_BLK_DEV_INITRD`:
+
+```console
+# make menuconfig
+```
+
+```
+--> General Setup
+    ...
+    [ ] Initial RAM filesystem and RAM disk (initramfs/initrd) support
+    ...
+```
+
+
+
 Then build and install the kernel
 
 ```console
@@ -349,6 +365,23 @@ Ensure that after reboot network is working, therefore install the needed tools.
 
 ```console
 # emerge --ask net-misc/dhcpcd
+```
+
+### Final Note for SystemD
+
+To ensure systemD can boot create a machine-id file by:
+
+```console
+# touch /etc/machine-id
+```
+
+to enable network after reboot.
+
+```console
+# systemctl enable dhcpcd
+# systemctl start dhcpcd
+# systemctl enable sshd
+# systemctl start sshd
 ```
 
 ### Clean up
