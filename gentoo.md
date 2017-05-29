@@ -328,6 +328,14 @@ Supposing the system has UEFI firmware:
 ```
 
 Use the grub-mkconfig command to generate the configuration file:
+Note that if you choose to use systemd you need to enable it first by:
+```
+# /etc/default/grub
+# uncomment or add folling line
+GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd rootfstype=btrfs"
+```
+this will enable systemd and tell grub that our rootfs is btrfs and he has not
+to guess the filesystem. Then finaly create config.
 
 ```console
 # grub-mkconfig -o /boot/grub/grub.cfg
