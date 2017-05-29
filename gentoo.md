@@ -1,6 +1,9 @@
 Gentoo Documentation
 ====================
 
+* TOC
+{:toc}
+
 Installation
 ------------
 
