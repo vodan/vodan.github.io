@@ -1,5 +1,9 @@
-Gentoo Documentation
+Gentoo Fast Installation
 ====================
+
+This Article shall hold all information to easy setup a Gentoo base system. The
+goal is to get as fast as possible to the reboot.
+
 
 * TOC
 {:toc}
