@@ -6,6 +6,7 @@ goal is to get as fast as possible to the reboot.
 
 
 * TOC
+{::options toc_levels="3"}
 {:toc}
 
 Installation
