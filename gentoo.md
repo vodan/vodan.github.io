@@ -24,17 +24,6 @@ time you boot) you can bypass the check of ssh with the following two options.
 
 ### Prepare the Disk
 
-Easy and fast way to create initial partition layout is `cfdisk`, Be sure to
-enable **bootflag** for boot partition.
-
- Label | Filesystem Type                | Size              |
--------|--------------------------------|-------------------|
- boot  | ext2                           | 512MB             |
- swap  | swap                           | RAM + 2GB         |
- ...   | container or other partitions  | all other space   |
-
-#### The Parted way.
-
 Layout:  
 
 - swap
@@ -205,17 +194,6 @@ LABEL=SWAP      none    swap            sw                              0 0
 
 we will skip this file here as we will configure it after reboot.
 
-#### /etc/env.d/02locale
-
-```
-LANG="de_DE.UTF-8"
-LC_COLLATE="C"
-```
-
-#### Keymap
-
-Edit /etc/conf.d/keymaps
-
 #### Timezone
 
 Set the appropriate timezone:
@@ -223,6 +201,63 @@ Set the appropriate timezone:
 ```console
 # ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 ```
+
+#### systemD
+
+##### locale
+
+###### /etc/env.d/02locale
+
+```
+LANG="de_DE.UTF-8"
+LC_COLLATE="C"
+```
+
+```console
+# eselect locale list
+
+Available targets for the LANG variable:
+    [1]   C *
+    [2]   POSIX
+    [3]   en_GB
+    [4]   en_GB.iso88591
+    [5]   en_GB.utf8
+    [  ]   (free form)
+```
+
+```console
+# eselect locale set 5
+# source /etc/profile 
+```
+
+Now we need to inform systemd of our choice. Issue: 
+
+```console
+# localectl set-locale LANG="${LANG}" LC_COLLATE="C" 
+```
+
+##### Keymap
+
+```console
+# localectl list-keymaps | grep -i de
+# localectl set-keymap de
+# loadkeys de
+# localectl --no-convert set-x11-keymap de
+```
+
+#### openRC
+
+##### /etc/env.d/02locale
+
+```
+LANG="de_DE.UTF-8"
+LC_COLLATE="C"
+```
+
+##### Keymap
+
+Edit /etc/conf.d/keymaps
+
 
 ### Kernel
 
