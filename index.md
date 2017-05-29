@@ -1,3 +1,8 @@
+---
+title: vodans blog
+description: A collection of braindumps from vodan.
+---
+
 # My Personal website
 
 This site shall hold multiple informations I want to share or more or less I
