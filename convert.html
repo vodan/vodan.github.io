@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="sha1.js"></script>
+    <script>
+      function convert() {
+        var Eingabe = document.getElementById('input');
+        var sha = sha1(Eingabe.value);
+        var base64 = btoa(unescape(encodeURIComponent(sha)));
+        var Ausgabe = base64.substring(0,14) + "4_";
+        return Ausgabe;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Convert</h2>
+    <input type="text" id="input" value=""></br>
+    <button type="button" onclick="document.getElementById('demo').innerHTML = convert()">
+      Click me to display convertsion.</button>
+    </br>
+    <p id="demo"></p>
+  </body>
+</html>
