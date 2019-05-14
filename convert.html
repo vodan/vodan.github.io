@@ -7,18 +7,23 @@
       function convert() {
         var Eingabe = document.getElementById('input');
         var sha = sha1(Eingabe.value);
+        document.getElementById('input').value = "";
         var base64 = btoa(unescape(encodeURIComponent(sha)));
         var Ausgabe = base64.substring(0,14) + "4_";
-        return Ausgabe;
+        document.getElementById('demo').innerHTML = Ausgabe;
+        document.getElementById('demo').focus()
+        document.getElementById('demo').select()
+        return;
       }
     </script>
   </head>
   <body>
     <h2>Convert</h2>
     <input type="text" id="input" value=""></br>
-    <button type="button" onclick="document.getElementById('demo').innerHTML = convert()">
+    <button type="button" onclick="convert()">
       Click me to display convertsion.</button>
     </br>
-    <p id="demo"></p>
+    <textarea id="demo" rows="1" cols="18" onclick="this.focus();this.select()" readonly="readonly">
+    </textarea>
   </body>
 </html>
